@@ -1,0 +1,14 @@
+{
+  "env": {
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "i18n-dictionary-path": "./src/locales/en.json"
+  }
+}
