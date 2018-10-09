@@ -17,21 +17,33 @@ var rule = require("../../../lib/rules/i18n-no-non-existent-key"),
 // Tests
 //------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+
+const parserOptions = {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmaFeatures: {
+        jsx: true
+    }
+};
+
+const ruleTester = new RuleTester({
+    parserOptions
+});
 ruleTester.run("i18n-no-non-existent-key", rule, {
 
     valid: [
-
-        // give me some code that won't trigger a warning
+        {
+            code: "<FormattedMessage id=\"some.id.exist\" />"
+        }
     ],
 
     invalid: [
         {
-            code: "<FormmatedMessage id=\"some.id.not.exist\" />",
+            code: "<FormmattedMessage id=\"some.id.not.exist\" />",
             errors: [{
-                message: "Fill me in.",
-                type: "Me too"
-            }]
+                message: "Keys must exist in the i18n dictionary"
+            }],
+            parser: 'babel-eslint'
         }
     ]
 });
