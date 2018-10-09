@@ -8,30 +8,40 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/i18n-no-literal"),
+const rule = require("../../../lib/rules/i18n-no-literal");
+const RuleTester = require('eslint').RuleTester;
 
-    RuleTester = require("eslint").RuleTester;
-
+const parserOptions = {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmaFeatures: {
+        jsx: true
+    }
+};
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester({
+    parserOptions
+});
+
 ruleTester.run("i18n-no-literal", rule, {
 
     valid: [
-
-        // give me some code that won't trigger a warning
+        {
+            code: "<button>{intl('label.click_me')}abc</button>"
+        }
     ],
 
     invalid: [
         {
-            code: "<button>click me</button>",
+            code: "<div title=\"test\">Title</div>",
             errors: [{
-                message: "Fill me in.",
-                type: "Me too"
-            }]
+                message: "Must no literal"
+            }],
+            parser: 'babel-eslint'
         }
     ]
 });
