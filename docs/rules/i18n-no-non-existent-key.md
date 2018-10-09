@@ -1,6 +1,6 @@
-# I18n key does not exist in the dictionary. (i18n-non-existent-key)
+# Keys must exist in the i18n dictionary. (i18n-no-non-existent-key)
 
-I18n keys must exist in the dictionary
+Please describe the origin of the rule here.
 
 
 ## Rule Details

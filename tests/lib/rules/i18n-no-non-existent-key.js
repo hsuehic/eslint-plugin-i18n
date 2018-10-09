@@ -1,5 +1,5 @@
 /**
- * @fileoverview I18n key is not exist in the dictionary.
+ * @fileoverview Keys must exist in the i18n dictionary.
  * @author Richard&lt;xiaowei.hsueh@gmail.com&gt;
  */
 "use strict";
@@ -8,7 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/i18n-non-existent-key"),
+var rule = require("../../../lib/rules/i18n-no-non-existent-key"),
 
     RuleTester = require("eslint").RuleTester;
 
@@ -18,7 +18,7 @@ var rule = require("../../../lib/rules/i18n-non-existent-key"),
 //------------------------------------------------------------------------------
 
 var ruleTester = new RuleTester();
-ruleTester.run("i18n-non-existent-key", rule, {
+ruleTester.run("i18n-no-non-existent-key", rule, {
 
     valid: [
 
@@ -27,7 +27,7 @@ ruleTester.run("i18n-non-existent-key", rule, {
 
     invalid: [
         {
-            code: "<FormattedMessage id=\"some.id.donot.exist\" />",
+            code: "<FormmatedMessage id=\"some.id.not.exist\" />",
             errors: [{
                 message: "Fill me in.",
                 type: "Me too"
